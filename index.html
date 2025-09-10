@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Shah - Mechanical Engineering Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: black;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: black;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid black;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #667eea;
+            margin: 10px auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-org {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: #f0f0f0;
+            color: #667eea;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(45deg, #5a6fd8, #6b4d96);
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .org {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline-item {
+                margin-left: 1rem;
+            }
+
+            .timeline-item::before {
+                left: -1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Dev Shah</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Dev Shah</h1>
+            <p>Mechanical Engineering Student | Georgia Tech | Rising Junior</p>
+            <a href="#about" class="cta-button">Learn More About Me</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <p>I'm a passionate Mechanical Engineering student at Georgia Institute of Technology, expected to graduate in May 2027. My journey in engineering has been driven by a fascination with problem-solving and innovation, particularly in areas involving computational fluid dynamics, finite element analysis, and autonomous systems.</p>
+                    
+                    <p>Currently, I'm gaining valuable research experience in both cryogenic engineering and physics education research. My involvement with HyTech Racing has allowed me to apply theoretical knowledge to real-world challenges, while my diverse project portfolio demonstrates proficiency in both traditional mechanical engineering and modern computational tools.</p>
+                    
+                    <p>As a multilingual individual fluent in English, Gujarati, Hindi, and Swahili, with intermediate French skills, I bring a global perspective to collaborative engineering projects. I'm actively seeking internship opportunities where I can contribute to innovative engineering solutions while continuing to learn and grow.</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><strong>Phone:</strong> (470) 343-5360</p>
+                    <p><strong>Email:</strong> <a href="mailto:devsshah5@gmail.com">devsshah5@gmail.com</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="http://www.linkedin.com/in/dev-shah-a9b77a2a1" target="_blank">dev-shah-a9b77a2a1</a></p>
+                    <p><strong>Location:</strong> Atlanta, GA</p>
+                    <p><strong>Expected Graduation:</strong> May 2027</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills & Expertise</h2>
+            <div class="skills-grid fade-in">
+                <div class="skill-category">
+                    <h3>Programming & Software</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Simulink</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Engineering Software</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SolidWorks</span>
+                        <span class="skill-tag">CATIA</span>
+                        <span class="skill-tag">AutoCAD</span>
+                        <span class="skill-tag">Finite Element Analysis</span>
+                        <span class="skill-tag">CFD</span>
+                        <span class="skill-tag">GD&T</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Engineering Concepts</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Thermodynamics</span>
+                        <span class="skill-tag">Fluid Mechanics</span>
+                        <span class="skill-tag">Statics & Dynamics</span>
+                        <span class="skill-tag">Mechanics of Deformable Bodies</span>
+                        <span class="skill-tag">Heat Transfer</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Mathematics</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Differential Equations</span>
+                        <span class="skill-tag">Multivariable Calculus</span>
+                        <span class="skill-tag">Linear Algebra</span>
+                        <span class="skill-tag">Integral Calculus</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">English (Native)</span>
+                        <span class="skill-tag">Gujarati (Native)</span>
+                        <span class="skill-tag">Hindi (Native)</span>
+                        <span class="skill-tag">Swahili (Native)</span>
+                        <span class="skill-tag">French (Intermediate)</span>
+                        <span class="skill-tag">Spanish (Elementary)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Communication</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Technical Presentations</span>
+                        <span class="skill-tag">Lab Reports</span>
+                        <span class="skill-tag">Engineering Documentation</span>
+                        <span class="skill-tag">Email Communication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Projects</h2>
+            <div class="projects-grid fade-in">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Model Drone Design Project</h3>
+                        <p class="project-org">Georgia Institute of Technology</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Created a functional delivery drone model using SolidWorks, featuring detailed 3D printed components with comprehensive engineering drawings. Developed proficiency in fundamental SolidWorks operations including extrusions, lofts, cuts, and mirrors, while gaining understanding of Geometric Dimensioning and Tolerancing (GD&T).</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">SolidWorks</span>
+                            <span class="tech-tag">3D Printing</span>
+                            <span class="tech-tag">GD&T</span>
+                            <span class="tech-tag">Engineering Drawings</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Hub-Rotor Stress Analysis</h3>
+                        <p class="project-org">HyTech Racing @ Georgia Tech</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Performed comprehensive Finite Element Analysis (FEA) on tire hub connecting points, generating Von Mises stress diagrams to analyze load distribution patterns. Developed solutions to optimize load distribution between hub and rotor connection points.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">FEA</span>
+                            <span class="tech-tag">AutoCAD</span>
+                            <span class="tech-tag">Stress Analysis</span>
+                            <span class="tech-tag">Von Mises</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Autonomous Competition Robot</h3>
+                        <p class="project-org">ME2110, Georgia Tech</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Designed and fabricated a fully autonomous robot for competitive challenges, integrating mechanical design with Arduino programming. Enhanced skills in machining, CAD modeling, and fabrication while working collaboratively to meet strict competition parameters and limitations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">CAD Modeling</span>
+                            <span class="tech-tag">Machining</span>
+                            <span class="tech-tag">Fabrication</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Interactive AI Chatbot Web Application</h3>
+                        <p class="project-org">Georgia Tech</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Developed a fully functional Streamlit web application featuring an interactive chatbot that compares user characteristics to fictional characters. Demonstrated expertise in API integration and Large Language Models through implementation of the Gemini API.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Gemini API</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">LLMs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Experience & Leadership</h2>
+            <div class="experience-timeline fade-in">
+                <div class="timeline-item">
+                    <h3>Undergraduate Research Assistant</h3>
+                    <p class="org">Georgia Tech Cryo Lab</p>
+                    <p>Conducting experiments, developing models, and running simulations to explore computational fluid dynamics (CFD), low-temperature cryocooler testing, and two-phase flow phenomena including boiling and condensation of cryogenic fuels.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Undergraduate Research Assistant</h3>
+                    <p class="org">Physics Education Research</p>
+                    <p>Conducted in-depth reading on Multimedia Learning Theory, designed qualitative data-gathering interviews with students, and collaborated with mentors to refine research methodologies for educational effectiveness studies.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Undergraduate Teaching Assistant</h3>
+                    <p class="org">Georgia Institute of Technology</p>
+                    <p>Facilitated student learning in calculus-based mechanics topics and provided personalized tutoring to address individual student challenges. Developed strong communication and mentorship skills while reinforcing personal understanding of fundamental concepts.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Leadership Positions</h3>
+                    <p class="org">Model UN & Academic Competitions</p>
+                    <p>Served as Junior Chair at the East African Model UN conference and achieved recognition as a 3-time best speaker/best delegate winner. Demonstrated leadership, public speaking, and diplomatic skills in competitive international relations simulations.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Team Member</h3>
+                    <p class="org">HyTech Racing @ Georgia Tech</p>
+                    <p>Active member of Georgia Tech's Formula SAE electric vehicle team, contributing to various engineering projects and gaining hands-on experience in automotive engineering, teamwork, and project management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Dev Shah. All rights reserved. | Mechanical Engineering Portfolio</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.project-card, .skill-category').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Handle report button click
+        document.getElementById('reportButton').addEventListener('click', function() {
+            // Since we're in an artifact environment, we'll show an alert
+            // In a real deployment, this would open the PDF
+            alert('In a live website, this would open the ME2110 Final Report PDF. To implement this, upload the PDF file to your web server and update the button link.');
+        });
+    </script>
+</body>
+</html>
