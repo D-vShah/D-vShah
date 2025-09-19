@@ -73,7 +73,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: black;
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
         }
 
@@ -534,6 +534,9 @@
                             <span class="tech-tag">GD&T</span>
                             <span class="tech-tag">Engineering Drawings</span>
                         </div>
+                        <div style="margin-top: 1rem;">
+                            <button class="project-button" id="droneReportButton">View Project Report</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -565,6 +568,9 @@
                             <span class="tech-tag">CAD Modeling</span>
                             <span class="tech-tag">Machining</span>
                             <span class="tech-tag">Fabrication</span>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <button class="project-button" id="reportButton">View Full Report</button>
                         </div>
                     </div>
                 </div>
@@ -697,11 +703,13 @@
             });
         });
 
-        // Handle report button click
+        // Handle report button clicks
         document.getElementById('reportButton').addEventListener('click', function() {
-            // Since we're in an artifact environment, we'll show an alert
-            // In a real deployment, this would open the PDF
-            alert('In a live website, this would open the ME2110 Final Report PDF. To implement this, upload the PDF file to your web server and update the button link.');
+            window.open('annotated-ME%202110%20Section%20A09%20Team%205%20Final%20Report%20v2.pdf', '_blank');
+        });
+
+        document.getElementById('droneReportButton').addEventListener('click', function() {
+            window.open('ME1670%20Individual%20Project%20Report.pdf', '_blank');
         });
     </script>
 </body>
