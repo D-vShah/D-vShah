@@ -672,6 +672,10 @@
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
+        document.getElementById('me4699ReportButton').addEventListener('click', function() {
+    window.open('ME_4699_Final_report%20(1).pdf', '_blank');
+});
+
 
         // Active navigation highlighting
         window.addEventListener('scroll', () => {
@@ -721,5 +725,6 @@
     </script>
 </body>
 </html>
+
 
 
